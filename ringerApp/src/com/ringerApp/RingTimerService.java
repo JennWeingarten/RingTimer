@@ -2,6 +2,7 @@ package com.ringerApp;
 
 import android.app.Activity;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.IBinder;
@@ -14,14 +15,10 @@ public class RingTimerService extends Service {
 		return null;
 	}
 	
-	public void turnOffRinger(Intent intent){
-		AudioManager mAudio = (AudioManager) getSystemService(Activity.AUDIO_SERVICE);
+
+	public void sleepRinger(int secondsToSleep) {
+		AudioManager mAudio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 		mAudio.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-	}
-	
-	public void resetRinger(Intent intent) {
-		AudioManager mAudio = (AudioManager) getSystemService(Activity.AUDIO_SERVICE);
-		mAudio.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 	}
 
 }
