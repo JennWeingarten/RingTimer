@@ -34,6 +34,7 @@ public class RingTimerServiceTest extends ServiceTestCase<RingTimerService> {
             Intent startIntent = new Intent();
             startIntent.setClass(getContext(), RingTimerService.class);
             startService(startIntent); 
+            assertNotNull(getService());
         }
 
         /**
@@ -44,11 +45,14 @@ public class RingTimerServiceTest extends ServiceTestCase<RingTimerService> {
             Intent startIntent = new Intent();
             startIntent.setClass(getContext(), RingTimerService.class);
             IBinder service = bindService(startIntent);
-            
+            assertNotNull(service);
         }
 
 	@SmallTest
 	public void testRingerSleep(){
+            Intent startIntent = new Intent();
+            startIntent.setClass(getContext(), RingTimerService.class);
+            startService(startIntent);
             AudioManager mAudio = (AudioManager) getContext().getSystemService(Activity.AUDIO_SERVICE);
             mAudio.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
             Binding binding = new Binding();
